@@ -91,6 +91,9 @@ namespace Calcolo_hash
 			{
 				if (File.Exists(textBox2.Text)) // Eseguo un controllo sulla validità del file scelto in input!
 				{
+					this.button1.Enabled = false;
+					this.button2.Enabled = false;
+					this.Refresh();
 					Task primoTask = CalcolaHashMD5(textBox2.Text);
 					await primoTask;
 					textBox3.Text = output;
@@ -98,6 +101,9 @@ namespace Calcolo_hash
 					await secondoTask;
 					textBox4.Text = output;
 					SystemSounds.Hand.Play();
+					this.button1.Enabled = true;
+					this.button2.Enabled = false;
+					this.Refresh();
 				}
 				else
 				{
